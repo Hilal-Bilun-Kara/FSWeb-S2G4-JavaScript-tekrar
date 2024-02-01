@@ -64,14 +64,23 @@ function CemberinCevresi(r) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinAlani(r,pi) {
+  let alan = pi*Math.pow(r,2);
+  return alan;
 }
+let yariCap = 15;
+let alan = CemberinAlani(yariCap);
+console.log("Çemberin Alanı: " + alan);
+
+
+
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
 
+
+
 /* 	GÖREV 3:
-	- Sayfanın en üstünde global değişken olarak tanımlanmış bir sayilar dizisi bulunmaktadır. Bu dizi içinde 0 ile 1000 arasında rasgele oluşturulmuş tam sayılar ve ondalıklı sayılar bulunmaktadır. Bu diziyi kullanarak aşağıdakileri uygulayın:
+    Sayfanın en üstünde global değişken olarak tanımlanmış bir sayilar dizisi bulunmaktadır. Bu dizi içinde 0 ile 1000 arasında rasgele oluşturulmuş tam sayılar ve ondalıklı sayılar bulunmaktadır. Bu diziyi kullanarak aşağıdakileri uygulayın:
 		3a. enbuyuk ve enkucuk isminde 2 adet değişken tanımlayın ve sayilar dizisindeki en küçük sayı ile en büyük sayıyı bu değişkenlere atayın. (for döngüsü kullanın)
 		
 		3b. `ucetambolunenler` adında bir dizi tanımlayın ve bu diziye sayilar dizisindeki 3'ün tam katı olan sayıları atayın (.forEach metodunu kullanın)
@@ -99,27 +108,76 @@ let ucetambolunenler,
 
 // 3a çözümü
 
-/* kodlar buraya */
+
+  enbuyuk = sayilar[0];
+  enkucuk = sayilar[0];
+  
+  for (let i = 1; i < sayilar.length; i++) {
+    if (sayilar[i] > enbuyuk) {
+      enbuyuk = sayilar [i];
+    
+    } else if (sayilar[i] < enkucuk) {
+      enkucuk = sayilar [i];
+    
+    }
+  }
+
+  
 
 // 3b çözümü:
 
-/* kodlar buraya */
+ucetambolunenler = [];
+
+sayilar.forEach(function(sayi) {
+    if (sayi % 3 === 0) {
+        ucetambolunenler.push(sayi);
+    }
+});
 
 // 3c çözümü:
 
-/* kodlar buraya */
+ucebolunenlerintoplami = ucetambolunenler.reduce(function(toplam, sayi) {
+  return toplam + sayi;
+});
 
 // 3d çözümü
 
-/* kodlar buraya */
+besyuzdenkucuksayilar = [];
+sayilar.filter(function(sayi){
+  if (sayi<500) {
+    besyuzdenkucuksayilar.push(sayi)
+  }
+})
 
 // 3e çözümü
 
-/* kodlar buraya */
+siralisayilar = besyuzdenkucuksayilar.sort((a,b) => a-b);
+
+
 
 // 3f çözümü
 
-/* kodlar buraya */
+tekraredensayilar = [];
+let sayiTekrar = {};
+
+for (let i = 0; i < sayilar.length; i++) {
+  let sayi = sayilar[i];
+
+  if (sayiTekrar[sayi] === undefined) {
+      sayiTekrar[sayi] = 1;
+  } else {
+      sayiTekrar[sayi]++;
+  }
+}
+
+for (let sayi in sayiTekrar) {
+  if (sayiTekrar[sayi] > 1) {
+      let tekrarSayisi = sayiTekrar[sayi];
+      let tekrarEdenString = sayi + " sayısı " + tekrarSayisi + " kere tekrar edilmiştir";
+      tekraredensayilar.push(tekrarEdenString);
+  }
+}
+
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
